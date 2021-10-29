@@ -1,0 +1,54 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+<main>
+  <div class="card" >
+    <div class="text-center">
+      <img src="{% static 'images/' %}{{usuario.imagen}}" class="card-img-top" alt="..." style="width: 10rem;">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ usuario.nombre }} {{ usuario.apellido_uno }} {{ usuario.apellido_dos }}</h5>
+      <p class="card-text">{{ usuario.numero_empleado }}</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{ usuario.cargo }}</li>
+        <li class="list-group-item">{{ usuario.zona }}</li>
+        <li class="list-group-item">{{ usuario.municipio }}, {{ usuario.departamento }}</li>
+      </ul>
+      <p class="btn btn-primary">{{ ventas_total }}</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><p><strong>Teléfono:</strong> {{ usuario.celular }}</p></li>
+        <li class="list-group-item"><p><strong>Email:</strong> {{ usuario.email }}</p></li>
+        <li class="list-group-item"><p><strong>Fecha de Nacimiento:</strong> {{ usuario.fecha_nacimiento }}</p></li>
+        <li class="list-group-item"><p><strong>Número de Cédula:</strong> {{ usuario.cedula }}</li>
+          <li class="list-group-item"><p><strong>Fecha de Ingreso:</strong> {{ usuario.fecha_ingreso }}</p></li>
+        <li class="list-group-item"><p><strong>Nombre de Jefe:</strong> {{ jefe.nombre }} {{ jefe.apellido_uno }} {{ jefe.apellido_dos }}</p></li>
+        <li class="list-group-item"></li>
+      </ul>    
+    </div>
+  </div>
+  {% if subalternos %}
+  <div class="row d-flex justify-content-center mx-0">
+    <div class="col-8">
+      <h5 class="card-title">Empleados</h5>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Ventas</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for subalterno in subalternos %}
+            <li class="list-group-item"><p></p></li>
+            <tr>
+              <td>{{ subalterno.nombre }} {{ subalterno.apellido_uno }} {{ subalterno.apellido_dos }}</td>
+              <td>{{ subalterno.ventas }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endif %}
+</main>
+{% endblock %}

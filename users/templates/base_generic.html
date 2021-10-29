@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Paygo Test">
+    <meta name="author" content="Daniel Luna">
+    <title>Payco Test</title>
+
+    <link rel="canonical" href="https://127.0.0.1:8000/">
+
+<link href="{% static 'assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <link href="{% static 'assets/dist/css/signin.css' %}" rel="stylesheet">
+  </head>
+  <body class="text-center">
+
+    {% block content %}{% endblock %}
+    
+  </body>
+</html>

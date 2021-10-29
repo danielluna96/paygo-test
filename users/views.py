@@ -1,23 +1,27 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import redirect, render
 from rest_framework.generics import (RetrieveAPIView)
 from users.controller import UserController
-from django.http import JsonResponse
 
-#from utils.rest import ApiRestUtilities
-
-class DetalleEmpleadoporID(RetrieveAPIView):
+class DetalleEmpleadoporID(LoginRequiredMixin, RetrieveAPIView):  
+    login_url = ''
+    redirect_field_name = ''
     def get(self, request, *args, **kwargs):
         try:
-            numero_empleado: int = kwargs['numero_empleado']
+            if 'numero_empleado' in kwargs:
+                numero_empleado: int = kwargs['numero_empleado']
+            else:
+                if request.user.is_authenticated:
+                    numero_empleado: int = request.user.numero_empleado
             controller = UserController()
             data = controller.get_empleado(numero_empleado)
-            return JsonResponse(
-                status=200,
-                data=data
-            )
+            context = {
+                "usuario": data["usuario"],
+                "subalternos": data["subalternos"],
+                "ventas_total": data["ventas_total"],
+                "jefe": data["jefe"]
+            }
+            return render(request, 'user.html', context)
         except:
-            return JsonResponse(
-                status=404,
-                data={'error': "Usuario no encontrado",}
-            )
+            return redirect('../accounts/login/')           
