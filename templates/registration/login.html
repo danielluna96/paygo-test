@@ -5,7 +5,7 @@
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
       <img class="mb-4" src="{% static 'assets/brand/su-logo.svg' %}" alt="" width="72" height="57">
-      <h1 class="h3 mb-3 fw-normal">Por favor ingresa</h1>
+      <h1 class="h3 mb-3 fw-normal">Por favor ingresa tus datos</h1>
   
       <div class="form-floating">
         <input type="email" name="username" class="form-control" placeholder="name@example.com" required="" id="id_username">

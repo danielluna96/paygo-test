@@ -11,12 +11,14 @@
         </div>
         <div class="col-12 col-md-4">
           <div class="card-body">
+            <!--Datos de Usuario -->
             <h5 class="card-title">{{ usuario.nombre }} {{ usuario.apellido_uno }} {{ usuario.apellido_dos }}</h5>
             <p class="card-text">{{ usuario.numero_empleado }}</p>
             <p class="card-text">{{ usuario.cargo }}</p>
             <p class="card-text">{{ usuario.zona }}</p>
             <p class="card-text">{{ usuario.municipio }}, {{ usuario.departamento }}</p>
             <p class="btn btn-primary">  
+            <!--Validaciones respecto a las ventas y definir que valor se visualizará -->
               {% if usuario.cargo != "Ejecutivo Comercial" %}
                 ${{ ventas_total }}
               {% else %}
@@ -29,6 +31,7 @@
             <p class="card-text"><strong>Número de Cédula:</strong> {{ usuario.cedula }}</p>
             <p class="card-text"><strong>Fecha de Ingreso:</strong> {{ usuario.fecha_ingreso }}</p>
             <p class="card-text">
+            <!--Validaciones respecto al usuario y al jefe para definir como se visualizará -->
               <strong>Nombre de Jefe:</strong>
                 {% if jefe.nombre %}
                   {% if usuario_logueado_jerarquia <= jefe_jerarquia %}
@@ -48,6 +51,7 @@
         </div>
       </div>
     </div>
+    <!--Si existen subalternos del usuario se visualizarán -->
     {% if subalternos %}
     <div class="row d-flex justify-content-center mx-0">
       <div class="col-md-8 col-12">

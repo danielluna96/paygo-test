@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from rest_framework.generics import (RetrieveAPIView)
 from users.controller import UserController,jerarquia
 
+#Clase vista encargada de mostrar los datos de usuario
 class DetalleEmpleadoporID(LoginRequiredMixin, RetrieveAPIView):  
     login_url = ''
     redirect_field_name = ''
@@ -15,9 +16,11 @@ class DetalleEmpleadoporID(LoginRequiredMixin, RetrieveAPIView):
             else:
                 if request.user.is_authenticated:
                     numero_empleado: int = request.user.numero_empleado
+
             controller = UserController()
             data = controller.get_empleado(numero_empleado)
 
+            #Verificación de la jerarquia del usuario logueado con el solicitado
             usuario_logueado_jerarquia = jerarquia(request.user.cargo)
             if(usuario_logueado_jerarquia <= data["usuario_jerarquia"]):
                 if(request.user.numero_empleado != data["usuario"]["numero_empleado"]):

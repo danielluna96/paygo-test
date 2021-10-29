@@ -8,9 +8,9 @@
     <meta name="author" content="Daniel Luna">
     <title>Payco Test</title>
 
-    <link rel="canonical" href="https://127.0.0.1:8000/">
-
-<link href="{% static 'assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="canonical" href="http://3.135.82.80/">
+    <link rel='icon' href='{% static 'assets/brand/favicon.ico' %}' type='image/x-icon' sizes="16x16" />
+    <link href="{% static 'assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -34,6 +34,7 @@
           <a class="navbar-brand" href="{% url 'home'%}">SU Logistics</a>
           <div>
             <div class="btn-group float-end">
+              <!--Si el usuario esta logueado se muestra la opción de home y cerrar sesión -->
               {% if user.is_authenticated %}
               <div class="mx-1">
                 <a href="{% url 'home'%}" class="ext-decoration-none text-light mx-auto">
@@ -51,7 +52,7 @@
       </div>
   </nav>
 
-    {% block content %}{% endblock %}
+  {% block content %}{% endblock %}
     
   </body>
 </html>

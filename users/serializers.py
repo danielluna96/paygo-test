@@ -2,6 +2,7 @@ from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from users.models import CustomUser
 
+#Se establece un serializer para devolver los datos de CustomUser de la forma deseada
 class CustomUserSerializer(serializers.ModelSerializer):
 
     class Meta:
