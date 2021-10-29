@@ -27,29 +27,10 @@
         }
       }
     </style>
+
+    <link href="{% static 'assets/dist/css/signin.css' %}" rel="stylesheet">
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-          <a class="navbar-brand" href="{% url 'home'%}">SU Logistics</a>
-          <div>
-            <div class="btn-group float-end">
-              {% if user.is_authenticated %}
-              <div class="mx-1">
-                <a href="{% url 'home'%}" class="ext-decoration-none text-light mx-auto">
-                  <span>Home</span>
-                </a>
-              </div>
-              <div class="mx-1">
-                <a href="{% url 'logout'%}?next={{request.path}}" class="ext-decoration-none text-light">
-                  <span>Cerrar sesión</span>
-                </a>
-              </div>
-              {% endif %}
-            </div>
-          </div>
-      </div>
-  </nav>
+  <body class="text-center">
 
     {% block content %}{% endblock %}
     
